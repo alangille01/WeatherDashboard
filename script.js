@@ -33,6 +33,12 @@ function fetchWeather(city) {
         .catch(error => console.error('Error fetching city coordinates:', error));
 }
 
+function fetchForecast(lat, lon) {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+        .then(response => response.json())
+        .then(data => displayForecast(data))
+        .catch(error => console.error('Error fetching forecast:', error));
+}
 
 searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
