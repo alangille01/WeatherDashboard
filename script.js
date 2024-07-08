@@ -40,6 +40,43 @@ function fetchForecast(lat, lon) {
         .catch(error => console.error('Error fetching forecast:', error));
 }
 
+function displayCurrentWeather(data) {
+    const date = new Date().toLocaleDateString();
+    currentWeatherEl.innerHTML = `
+        <h2>Current Weather:   ${data.name}</h2>
+        <div class="weather-card">
+            <h3>Today (${date})</h3>
+            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="${data.weather[0].description}">
+            <p>Temperature: ${data.main.temp}°C</p>
+            <p>Humidity: ${data.main.humidity}%</p>
+            <p>Wind Speed: ${data.wind.speed} m/s</p>
+        </div>
+    `;
+}
+
+function displayForecast(data) {
+    forecastEl.innerHTML = '<h2>5-Day Forecast</h2>';
+    for (let i = 0; i < data.list.length; i += 8) {
+        const forecast = data.list[i];
+        const date = new Date(forecast.dt_txt ).toLocaleDateString();
+
+        // Create forecast card element
+        const forecastCard = document.createElement('div');
+        forecastCard.classList.add('weather-card');
+        forecastCard.innerHTML = `
+            <h3>${date}</h3>
+            <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+                alt="${forecast.weather[0].description}">
+            <p>Temperature: ${forecast.main.temp}°C</p>
+            <p>Humidity: ${forecast.main.humidity}%</p>
+            <p>Wind Speed: ${forecast.wind.speed} m/s</p>
+        `;
+
+        // Append forecast card to forecastEl
+        forecastEl.appendChild(forecastCard);
+    }
+}
+
 searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const city = cityInput.value.trim();
