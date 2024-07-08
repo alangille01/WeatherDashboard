@@ -77,6 +77,22 @@ function displayForecast(data) {
     }
 }
 
+
+function saveSearchHistory(city) {
+    if (!searchHistory.includes(city)) {
+        searchHistory.push(city);
+        localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+        displaySearchHistory();
+    }
+}
+
+function displaySearchHistory() {
+    searchHistoryEl.innerHTML = '<h2>Search History</h2>';
+    searchHistory.forEach(city => {
+        searchHistoryEl.innerHTML += `<button onclick="fetchWeather('${city}')">${city}</button>`;
+    });
+}
+
 searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const city = cityInput.value.trim();

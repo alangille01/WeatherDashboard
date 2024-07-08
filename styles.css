@@ -3,3 +3,76 @@ body {
     background-color: #ecd0e6;
     color: #333;
 }
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#city-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 70%;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.weather-section {
+    margin-top: 20px;
+}
+
+.weather-section h2 {
+    margin-bottom: 10px;
+}
+
+.weather-section .weather-card {
+    display: inline-block;
+    width: calc(20% - 20px);
+    margin: 0 10px;
+    vertical-align: top;
+    box-sizing: border-box;
+    background-color: #e9d5e1;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.weather-section .weather-card img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#search-history button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-container {
+    border-radius: 8px;
+    padding: 10px;
+    overflow: hidden;
+}
